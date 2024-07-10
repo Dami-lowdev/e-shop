@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Shoppie - Login</title>
+	<meta name="title" content="Shoppie - Login">
+	<meta name="description" content="Login to your Shoppie account">
+
+	<!--=============== FAVICON ===============-->
+	<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+	<!--=============== BOXICONS ===============-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./src/css/font.css">
+	<link rel="stylesheet" href="./src/css/style.css">
+	<link rel="stylesheet" href="./src/css/cart.css">
+
+
+	<style>
+		.form-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 80vh;
+		}
+
+		.login-content {
+			background-color: #fff;
+			padding: 2rem;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			/* Updated box-shadow */
+			border-radius: 10px;
+			max-width: 400px;
+			width: 100%;
+			text-align: center;
+		}
+
+		.login-title {
+			margin-bottom: 1.5rem;
+		}
+
+		.input-group {
+			margin-bottom: 1rem;
+		}
+
+		.input-field {
+			width: 100%;
+			padding: 0.5rem;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.btn-primary {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			padding: 0.75rem;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.btn-primary .span {
+			margin-right: 0.5rem;
+		}
+
+		.register-link {
+			margin-top: 1rem;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header" data-header>
+		<div class="container">
+
+			<a href="index.html" class="logo">
+				<img src="./assets/images/logo.svg" width="132" height="27" alt="shoppie home">
+			</a>
+
+			<nav class="navbar" data-navbar>
+				<ul class="navbar-list">
+					<li>
+						<a href="index.html" class="navbar-link">Home</a>
+					</li>
+					<li>
+						<a href="articles.html" class="navbar-link">Articles</a>
+					</li>
+
+				</ul>
+
+				<div class="dropdown" id="account-dropdown">
+					<button class="dropdown-btn">
+						<ion-icon name="person-circle-outline"></ion-icon>
+						<span class="span">Account</span>
+					</button>
+					<div class="dropdown-content">
+						<a href="login.html">Login</a>
+						<a href="register.html">Register</a>
+					</div>
+				</div>
+				<button class="cart-btn">
+					<ion-icon name="bag" aria-hidden="true"></ion-icon>
+
+					<span class="span" id="cart-element">Cart</span>
+				</button>
+				<a href="#" class="btn" id="log-out">Log out</a>
+			</nav>
+			<button class="nav-open-btn" aria-label="toggle menu" data-nav-toggler>
+				<ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+			</button>
+
+		</div>
+		<!--==================== CART ====================-->
+		<div class="cart" id="cart">
+			<i class='bx bx-x cart__close' id="cart-close"></i>
+
+			<h2 class="cart__title-center">My Cart</h2>
+
+			<div class="cart__container" id="cart__container">
+			</div>
+
+			<hr>
+
+			<h2 class="cart__title-center">Shipment</h2>
+			<div class="shipment_container">
+				<div class="input-group">
+					<label for="carrier" class="input-label">Select a Carrier</label>
+					<select name="carrier" id="carrier">
+						<option value="">Select a Carrier</option>
+						<option value="DPD">DPD</option>
+						<option value="DHL">DHL</option>
+						<option value="DHL DHL Express">DHL Express</option>
+					</select>
+				</div>
+				<div class="input-group">
+					<label for="address" class="input-label">Your address</label>
+					<input type="address" id="address" name="address" class="input-field" required>
+					<div id="addressFeedback"></div>
+				</div>
+				<button type="submit" class="btn btn-primary" id="to-order">
+					<span class="span">Validate</span>
+					<ion-icon name="truck" aria-hidden="true"></ion-icon>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="section product" aria-label="product">
+			<div class="container">
+				<h2 class="h2 section-title title text-center">Explore Our Amazing Products</h2>
+				<ul class="product-list has-scrollbar" id="product-list">
+					<!-- Articles will be dynamically inserted here -->
+				</ul>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="container">
+
+			<div class="footer-top">
+
+				<div class="footer-brand">
+
+					<a href="#" class="logo">
+						<img src="./assets/images/logo.svg" width="132" height="27" loading="lazy" alt="shoppie home">
+					</a>
+
+					<p class="footer-text">
+						Main factor that sets us apart competition allows deliver a specialist business consultancy
+						service applies
+						its ranging experience
+					</p>
+
+					<ul class="social-list">
+
+						<li>
+							<a href="#" class="social-link">
+								<ion-icon name="logo-facebook"></ion-icon>
+							</a>
+						</li>
+
+						<li>
+							<a href="#" class="social-link">
+								<ion-icon name="logo-twitter"></ion-icon>
+							</a>
+						</li>
+
+						<li>
+							<a href="#" class="social-link">
+								<ion-icon name="logo-linkedin"></ion-icon>
+							</a>
+						</li>
+
+					</ul>
+
+				</div>
+
+				<ul class="footer-list">
+
+					<li>
+						<p class="footer-list-title title">Contact info</p>
+
+						<address class="footer-text">
+							Reutlingen <br>
+							Germany
+						</address>
+					</li>
+
+					<li>
+						<a href="mailto:info.shoppie@support.com" class="email">info.shoppie@support.com</a>
+					</li>
+
+					<li>
+						<a href="tel:+00 123 456 789" class="call">+00 123 456 789</a>
+					</li>
+
+				</ul>
+
+				<div class="footer-list">
+
+					<p class="footer-list-title title">Subscribe newsletter</p>
+
+					<input type="email" name="email_address" placeholder="Enter your email address" required
+						autocomplete="off" class="input-field">
+
+					<button class="btn btn-secondary">Subscribe</button>
+
+				</div>
+
+			</div>
+
+			<div class="footer-bottom">
+
+				<div class="wrapper">
+
+					<div class="link-wrapper">
+
+					</div>
+				</div>
+
+				<p class="copyright">
+					&copy; 2024 Aristote&Damien, All Rights Reserved
+				</p>
+
+			</div>
+
+			<img src="./assets/images/footer-shape-1.png" width="245" height="165" loading="lazy" alt="shape"
+				class="shape shape-1">
+
+			<img src="./assets/images/footer-shape-2.png" width="138" height="316" loading="lazy" alt="shape"
+				class="shape shape-2">
+
+			<img src="./assets/images/footer-shape-3.png" width="346" height="92" loading="lazy" alt="shape"
+				class="shape shape-3">
+
+		</div>
+	</footer>
+
+	<script src="./src/js/function.js"></script>
+	<script src="./src/js/script.js"></script>
+	<script src="./src/js/ArticleComponent.js"></script>
+	<script src="./src/js/articles.js"></script>
+	<script src="./src/js/cart.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
